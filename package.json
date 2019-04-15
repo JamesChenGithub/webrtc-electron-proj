@@ -2,9 +2,10 @@
   "name": "webrtc-elec",
   "version": "1.0.0",
   "description": "webrtc elec接入demo",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "electron start"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
