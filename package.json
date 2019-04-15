@@ -1,0 +1,25 @@
+{
+  "name": "webrtc-elec",
+  "version": "1.0.0",
+  "description": "webrtc elec接入demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesChenGithub/webrtc-electron-proj.git"
+  },
+  "keywords": [
+    "webrtc"
+  ],
+  "author": "alexichen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesChenGithub/webrtc-electron-proj/issues"
+  },
+  "homepage": "https://github.com/JamesChenGithub/webrtc-electron-proj#readme",
+  "devDependencies": {
+    "electron-build": "^0.0.3"
+  }
+}
