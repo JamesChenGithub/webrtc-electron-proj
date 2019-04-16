@@ -2,26 +2,163 @@
 <html lang="zh-cn">
 
 <head>
-    <meta charset="UTF-8">
-    <title>WebRtc-Elec示例</title>
-    <link type="text/css" rel="stylesheet" href="css/index.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>WebRtc-Elec示例</title>
+  <link type="text/css" rel="stylesheet" href="css/index.css" />
+  <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
+  </script>
+  <script type="text/javascript">
+    var $ = require("jquery");
+
+    //==============================
+    // 登录参数
+    const_sdkappid = 1400037025;
+    const_accountType = 14418;
+    const_usersig = "";
+    const_privatemap = "";
+    const_roletype = "";
+
+    g_userid = 0;
+    g_roomid = 0;
+  //==============================
+    // 工具函数
+    function randomdefault() {
+      var userid = randomUserid();
+      document.getElementById("userid").value = userid;
+
+      var roomid = randomRoomid();
+      document.getElementById("roomid").value = roomid;
+    }
+
+    function randomUserid() {
+      return parseInt(Math.random() * 10000 + 20000);
+    }
+
+    function randomRoomid() {
+      return parseInt(Math.random() * 100 + 1500);
+    }
+
+    function onLoginSucc() {
+      console.log("loginsucc");
+
+      // document.getElementById("login_dlg").setAttribute("display", "none");
+      // document.getElementById("webrtc_dlg").setAttribute("display", "");
+
+      $('#login_dlg').css('display', 'none');
+      $('#webrtc_dlg').css('display', 'flex');
+
+
+    }
+
+    function loginWith(userid, roomid) {
+      
+
+      var FetchSigCgi =
+        "https://www.qcloudtrtc.com/sxb_dev/?svc=account&cmd=authPrivMap";
+      var params = {
+        appid: const_sdkappid,
+        accounttype: const_accountType,
+        roomnum: parseInt(roomid),
+        identifier: userid,
+        pwd: "123",
+        privMap: 255,
+        expire_time: 604800
+      };
+      console.log(params);
+      $.ajax({
+        type: "POST",
+        url: FetchSigCgi,
+        dataType: "json",
+        data: JSON.stringify(params),
+        success: function (json) {
+          if (json && json.errorCode === 0) {
+            //一会儿进入房间要用到
+            var userSig = json.data.userSig;
+            var privateMapKey = json.data.privMapEncrypt;
+            const_usersig = userSig;
+            const_privatemap = privateMapKey;
+
+            console.log(json);
+            onLoginSucc();
+          } else {
+            console.error(json);
+          }
+        },
+        error: function (err) {
+          console.error(err);
+        }
+      });
+    }
+
+    // 登录
+    function onClickLogin() {
+      
+        console.log("!loginsucc点击登录");
+        var userid = document.getElementById("userid").value;
+        console.log(userid);
+        if (userid.length === 0) {
+          alert("UserID不能为空");
+          return;
+        }
+
+        var roomid = document.getElementById("roomid").value;
+        console.log(roomid);
+        if (roomid.length === 0) {
+          alert("RoomID不能为空");
+          return;
+        }
+        // TODO：添加正整数判断
+        console.log(const_sdkappid);
+        console.log(const_accountType);
+        console.log(userid);
+        console.log(roomid);
+        loginWith(userid, roomid);
+      
+    }
+  </script>
+
 </head>
 
-<body>
-    <div class="chatnav">左侧导航</div>
-    <div class="chatlist">中间列表</div>
-    <div class="chatpanel">
-            <div class="chatpanelheader">聊天顶部</div>
-            <div class="chatpanelcontent">
-                <div class="chatmsg">消息区</div>
-                <div class="chatinput">
-                    <dic class="chatinputbar">表情工具栏</div>
-                    <dic class="charinputarea">输入区</div> 
-                </div>
-                <div class="chatusers">用户列表</div>
-            </div>
+<body onload="randomdefault()">
+
+  <div class="container" id="webrtc_dlg">
+    <div class="action">
+      ActionList
+      <table id="actionlist">
+      </table>
     </div>
+    <div class="userpanel">
+      <div class="local_render">local_render</div>
+      <!-- <div class="local_render">local_render</div>
+            <div class="local_render">local_render</div>
+            <div class="local_render">local_render</div>
+            <div class="local_render">local_render</div>
+            <div class="local_render">local_render</div>
+            <div class="local_render">local_render</div>
+            <div class="local_render">local_render</div>
+            <div class="local_render">local_render</div>
+            <div class="local_render">local_render</div> -->
+    </div>
+
+  </div>
+
+  <div class="loginpanel" id="login_dlg">
+    <div class="loginform">
+      
+        登录
+        <input type="text" name="userid" id="userid" placeholder="UserID" required />
+        <input type="text" name="roomid" id="roomid" placeholder="RoomID" required />
+        <select id="roletype">
+          <option value="role_teacher">Teacher</option>
+          <option value="role_student" selected="selected">Student</option>
+          <option value="role_parent">Parent</option>
+          <option value="role_fireman">FireMan</option>
+        </select>
+        <input type="button" name="login_btn" id="login_btn" value="Login" onclick="onClickLogin()" />
+      
+    </div>
+  </div>
+
 </body>
 
 </html>

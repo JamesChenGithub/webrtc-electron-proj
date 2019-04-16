@@ -22,5 +22,8 @@
   "homepage": "https://github.com/JamesChenGithub/webrtc-electron-proj#readme",
   "devDependencies": {
     "electron-build": "^0.0.3"
+  },
+  "dependencies": {
+    "jquery": "^3.4.0"
   }
 }

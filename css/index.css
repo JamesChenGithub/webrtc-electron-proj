@@ -10,104 +10,99 @@ body {
     height: 100%;
     padding: 0;
     margin: 0;
-    background-color: blanchedalmond;
-    color: rebeccapurple;
+    background-color:rgba(30, 30, 30, 0.8);
+    user-select: none;
+    overflow-x: hidden;
+	overflow-y: hidden;
 }
 
-.chatnav {
-    float: left;
-    width: 80px;
+.loginpanel {
+    width:400px;
+    height:300px;
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    margin-left:-200px;
+    margin-top:-150px;
+    border:2px solid rgba(210, 210, 210, 0.9);
+    border-radius: 5px;
+    background-color:rgba(240, 240, 240, 0.9);	
+    align-content:center;
+}
+
+
+.loginform {
+    text-align: center;
+    width:300px;
+    height:200px;
+    position:relative;
+    left:50%;
+    top:50%;
+    margin-left:-150px;
+    margin-top:-100px;
+ 
+}
+
+input, select {
+    display: block;
+    width:80%;
+    height: 30px;
+    margin: 10px 30px 10px 30px;
+    text-align: center;
+    text-align-last: center;
+    border:1px solid rgb(120, 120, 120);
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input[type=text] {
+    background:rgba(120, 0, 0, 0.1);
+}
+
+select {
+    line-height: 20px;
+    padding: 0px;
+}
+
+/* form{
+    color: black;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 20px;
+} */
+
+.container {
+    width: 100%;
     height: 100%;
-    color: white;
-    background-color: rgba(20, 20, 20, 0.8);
-    border-right: 1px solid rgb(230, 230, 230);
-}
-
-.chatlist {
-    float: left;
-    width: 150px;
-    height: 100%;
-    color: black;
-    background-color: rgb(120, 240, 240);
-    border-right: 1px solid rgb(120, 220, 220);
-}
-
-.chatpanel {
-    height: 100%;
-    background-color: white;
-}
-
-
-.chatpanelheader {
-    position: absolute;
-    left: 230px;
-    top: 0px;
-    right: 0px;
-    height: 40px;
-    color: black;
-    background-color: rgba(20, 230, 220, 0.8);
-}
-
-.chatpanelcontent {
-    position: absolute;
-    left: 230px;
-    top: 40px;
-    right: 0px;
-    bottom: 0px;
-    background-color: black;
-}
-
-.chatusers {
-    position: absolute;
-    width: 150px;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    color: black;
-    background-color: rgb(120, 120, 120);
-    border-left: 1px solid rgb(230, 225, 220);
-}
-
-.chatmsg {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    right: 150px;
-    bottom: 150px;
-    color: black;
-    background-color: rgba(210, 170, 220, 0.8);
+    background: rgb(20, 20, 20);
     display: flex;
     flex-direction: row;
 }
 
-.chatinput {
-    position: absolute;
-    left: 0px;
-    right: 150px;
-    bottom: 0px;
-    height: 150px;
-    color: black;
-    background-color: red;
+.action {
+    color: white;
+    text-align: center;
+    width: 10%;
+    min-width: 150px;
+    height: 100%;
+    background-color:rgb(28, 28, 28);
+    border-right: 1px solid rgb(50, 50, 50);
 }
 
-.chatinputbar {
-    position: absolute;
-    right: 0px;
-    left: 0px;
-    top: 0px;
-    height: 30px;
-    color: black;
-    background-color: rgba(110, 130, 220, 0.8);
-    border-top: 1px solid rgb(230, 225, 220);
-    border-bottom: 1px solid rgb(230, 225, 220);
+.userpanel {
+    width:90%;
+    height: 100%;
+    min-width: 450px;
+    margin: 5px 5px;
 }
 
-.charinputarea {
-    position: absolute;
-    right: 0px;
-    left: 0px;
-    bottom: 0px;
-    height: 120px;
-    color: black;
-    background-color: rgb(235, 235, 235);
+.local_render {
+    padding: 5px;
+    color: white;
+    text-align: center;
+    width: 250px;
+    height: 330px;
+    float: left;
+    margin: 5px;
+    background-color:rgb(50, 50, 50);
 }
