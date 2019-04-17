@@ -20,7 +20,7 @@
 
     g_userid = 0;
     g_roomid = 0;
-  //==============================
+    //==============================
     // 工具函数
     function randomdefault() {
       var userid = randomUserid();
@@ -46,12 +46,11 @@
 
       $('#login_dlg').css('display', 'none');
       $('#webrtc_dlg').css('display', 'flex');
-
-
+      $('#webrtc_dlg').css('flex-direction', 'row');
     }
 
     function loginWith(userid, roomid) {
-      
+
 
       var FetchSigCgi =
         "https://www.qcloudtrtc.com/sxb_dev/?svc=account&cmd=authPrivMap";
@@ -92,28 +91,28 @@
 
     // 登录
     function onClickLogin() {
-      
-        console.log("!loginsucc点击登录");
-        var userid = document.getElementById("userid").value;
-        console.log(userid);
-        if (userid.length === 0) {
-          alert("UserID不能为空");
-          return;
-        }
 
-        var roomid = document.getElementById("roomid").value;
-        console.log(roomid);
-        if (roomid.length === 0) {
-          alert("RoomID不能为空");
-          return;
-        }
-        // TODO：添加正整数判断
-        console.log(const_sdkappid);
-        console.log(const_accountType);
-        console.log(userid);
-        console.log(roomid);
-        loginWith(userid, roomid);
-      
+      console.log("!loginsucc点击登录");
+      var userid = document.getElementById("userid").value;
+      console.log(userid);
+      if (userid.length === 0) {
+        alert("UserID不能为空");
+        return;
+      }
+
+      var roomid = document.getElementById("roomid").value;
+      console.log(roomid);
+      if (roomid.length === 0) {
+        alert("RoomID不能为空");
+        return;
+      }
+      // TODO：添加正整数判断
+      console.log(const_sdkappid);
+      console.log(const_accountType);
+      console.log(userid);
+      console.log(roomid);
+      loginWith(userid, roomid);
+
     }
   </script>
 
@@ -125,11 +124,33 @@
     <div class="action">
       ActionList
       <table id="actionlist">
+        <script>
+
+          var content_html = '';
+          for (var i = 0; i < 10; i++) {
+            var row = '<tr><td>';
+            row += '<a class="actionrow">' + '测试数据' + '</a>';
+            row += '</td></tr>';
+            content_html += row + '\n';
+          }
+
+          document.getElementById("actionlist").innerHTML = content_html;
+        </script>
       </table>
     </div>
-    <div class="userpanel">
-      <div class="local_render">local_render</div>
-      <!-- <div class="local_render">local_render</div>
+    <div class="panel">
+      <div class="userpanel">
+        <div class="render">
+          <p>local_render</p>
+          <span class="usertip" id="usertip_vol">Vol</span>
+          <input type="button" class="useravtip" value="A">
+          <span class="usertip" id="usertip_net">Net</span>
+          <input type="button" class="useravtip" value="V">
+
+
+
+        </div>
+        <!-- <div class="local_render">local_render</div>
             <div class="local_render">local_render</div>
             <div class="local_render">local_render</div>
             <div class="local_render">local_render</div>
@@ -138,24 +159,25 @@
             <div class="local_render">local_render</div>
             <div class="local_render">local_render</div>
             <div class="local_render">local_render</div> -->
+      </div>
+      <div class="logpanel"></div>
     </div>
-
   </div>
 
   <div class="loginpanel" id="login_dlg">
     <div class="loginform">
-      
-        登录
-        <input type="text" name="userid" id="userid" placeholder="UserID" required />
-        <input type="text" name="roomid" id="roomid" placeholder="RoomID" required />
-        <select id="roletype">
-          <option value="role_teacher">Teacher</option>
-          <option value="role_student" selected="selected">Student</option>
-          <option value="role_parent">Parent</option>
-          <option value="role_fireman">FireMan</option>
-        </select>
-        <input type="button" name="login_btn" id="login_btn" value="Login" onclick="onClickLogin()" />
-      
+
+      登录
+      <input type="text" name="userid" id="userid" placeholder="UserID" required />
+      <input type="text" name="roomid" id="roomid" placeholder="RoomID" required />
+      <select id="roletype">
+        <option value="role_teacher">Teacher</option>
+        <option value="role_student" selected="selected">Student</option>
+        <option value="role_parent">Parent</option>
+        <option value="role_fireman">FireMan</option>
+      </select>
+      <input type="button" name="login_btn" id="login_btn" value="Login" onclick="onClickLogin()" />
+
     </div>
   </div>
 
