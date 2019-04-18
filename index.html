@@ -124,12 +124,13 @@
     <div class="action">
       ActionList
       <table id="actionlist">
+        
         <script>
-
+          var actions = ["detectRTC"];
           var content_html = '';
-          for (var i = 0; i < 10; i++) {
+          for (var i = 0; i < actions.length; i++) {
             var row = '<tr><td>';
-            row += '<a class="actionrow">' + '测试数据' + '</a>';
+            row += '<a class="actionrow">' + actions[i] + '</a>';
             row += '</td></tr>';
             content_html += row + '\n';
           }

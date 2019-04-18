@@ -114,17 +114,19 @@ tr,td {
     width:90%;
     height: 100%;
     min-width: 450px;
-    margin: 5px 5px;
+    margin: 0px;
+    padding: 0px
 }
 
 
 
 .userpanel {
     width:100%;
-    height: 70%;
-    background:red;
+    height: 80%;
     display: flex;
+    margin: 0px 0px;
     flex-direction: row;
+    border-bottom: 1px solid rgb(50, 50, 50);
 }
 .render {
     color: white;
@@ -134,20 +136,31 @@ tr,td {
     margin: 5px;
     padding: 0px;
     background-color:rgb(15, 15, 15);
-    border: 1px solid rgb(40, 40, 40);
+    border: 1px solid rgb(50, 50, 50);
     border-radius: 5px;
 }
 
 .logpanel {
     width:100%;
-    height: 30%;
-    background:green;
+    height: 20%;
+    margin: 0px 0px;
+    background:rgb(30, 30, 30);
 }
 
 
 
 a {
     text-align: left;
+    color: white;
+    margin: 0px;
+    font-size: 20px;
+    /* border: 1px solid rgb(240, 40, 40); */
+    margin: 0px;
+    text-decoration: none;
+}
+
+p {
+    text-align: center;
     color: white;
     margin: 0px;
     font-size: 20px;
